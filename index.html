@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body style="background-color: rgba(126, 237, 154, 0.8);" onload="initIM()">
+      <script>
+
+      var imgArray = new Array();
+      var index = 0;
+      function initIM(){
+        imgArray[0] = new Image();
+        imgArray[0].src = '1.png';
+
+        imgArray[1] = new Image();
+        imgArray[1].src = '2.png';
+
+        imgArray[2] = new Image();
+        imgArray[2].src = '3.png';
+
+        imgArray[3] = new Image();
+        imgArray[3].src = '4.png';
+
+        document.getElementById("image").src = imgArray[index].src;
+      }
+
+      function next(){
+        if(index <= 2){
+          index += 1;
+          document.getElementById("image").src = imgArray[index].src;
+        }
+        if(index == 3){
+          document.getElementById("nextB").className = "btn btn-success disabled";
+        }
+        if(index >= 0){
+          document.getElementById("backB").className = "btn btn-success";
+        }
+      }
+
+      function back(){
+        if(index >= 1){
+        index -= 1;
+          document.getElementById("image").src = imgArray[index].src;
+        }
+        if(index == 0){
+          document.getElementById("backB").className = "btn btn-success disabled";
+        }
+        if(index <= 3){
+          document.getElementById("nextB").className = "btn btn-success";
+        }
+      }
+
+      </script>
+        <div class="jumbotron" style="background-color:white; margin:200px; text-align: center;">
+
+          <div class="row justify-content-md-center" id="flashcard1">
+
+            <div class="container">
+              <img id="image" src="" style="max-width:100%;max-height:100%;"></img>
+            </div>
+            <hr style="  border: 0;clear:both;display:block;width: 80%;background-color:rgb(211,211,211);height: 5px;"/>
+          </div>
+            <div class="row" style="text-align:center;">
+              <div class="col-sm">
+                <button id="backB" style="max-width:100%;max-height:100%;" type="button" class="btn btn-success disabled" onclick="back()">Back</button>
+              </div>
+              <div class="col-sm">
+                <button id="nextB"  style="max-width:100%;max-height:100%;" type="button" class="btn btn-success" onclick="next()">Next</button>
+              </div>
+            </div>
+      </div>
+    </body>
+</html>
